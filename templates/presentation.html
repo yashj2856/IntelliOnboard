@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Onboarding — {{ employee_name }}</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #0f172a; color: #f8fafc; }
+
+  .slide {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem 6rem;
+    position: relative;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  /* Slide variants */
+  .slide-title {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a78bfa 100%);
+    text-align: center;
+    align-items: center;
+  }
+  .slide-title h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 1rem; }
+  .slide-title .subtitle { font-size: 1.5rem; opacity: 0.9; font-weight: 300; }
+  .slide-title .meta { margin-top: 2rem; opacity: 0.7; font-size: 1rem; }
+
+  .slide-content { background: #1e293b; }
+  .slide-content h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: #a78bfa;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .slide-alt { background: #0f172a; }
+  .slide-alt h2 { color: #818cf8; }
+
+  .slide-end {
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    text-align: center;
+    align-items: center;
+  }
+  .slide-end h2 { font-size: 2.5rem; color: #fff; margin-bottom: 1.5rem; }
+
+  /* Content elements */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+  .card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: transform 0.2s;
+  }
+  .card:hover { transform: translateY(-2px); background: rgba(255,255,255,0.08); }
+  .card h3 { font-size: 1.1rem; color: #c4b5fd; margin-bottom: 0.5rem; }
+  .card p { font-size: 0.95rem; opacity: 0.8; line-height: 1.5; }
+  .card .email { font-size: 0.85rem; opacity: 0.6; margin-top: 0.3rem; }
+
+  ul.clean { list-style: none; padding: 0; }
+  ul.clean li {
+    padding: 0.75rem 1rem;
+    margin: 0.4rem 0;
+    background: rgba(255,255,255,0.04);
+    border-radius: 8px;
+    border-left: 3px solid #6366f1;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .timeline { display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem; }
+  .timeline-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: rgba(255,255,255,0.04);
+    border-radius: 10px;
+  }
+  .timeline-day {
+    background: #6366f1;
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    min-width: 60px;
+    text-align: center;
+  }
+  .timeline-content h4 { font-size: 1rem; color: #e2e8f0; }
+  .timeline-content p { font-size: 0.9rem; opacity: 0.7; margin-top: 0.25rem; }
+
+  table.checklist {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+  table.checklist th {
+    background: rgba(99,102,241,0.3);
+    text-align: left;
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  table.checklist td {
+    padding: 0.6rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 0.95rem;
+  }
+  table.checklist tr:hover { background: rgba(255,255,255,0.03); }
+
+  .contact-table { width: 100%; margin-top: 1rem; }
+  .contact-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .contact-table .label { font-weight: 600; color: #c4b5fd; width: 200px; }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  .value-item {
+    background: rgba(255,255,255,0.05);
+    border-radius: 10px;
+    padding: 1.2rem;
+    text-align: center;
+    font-size: 1.1rem;
+  }
+
+  .slide-number {
+    position: absolute;
+    bottom: 2rem;
+    right: 3rem;
+    opacity: 0.3;
+    font-size: 0.85rem;
+  }
+
+  @media print {
+    .slide { page-break-after: always; min-height: 100vh; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== SLIDE 1: Title ===== -->
+<div class="slide slide-title">
+  <h1>Welcome, {{ employee_name }}!</h1>
+  <div class="subtitle">{{ role_title }} — {{ team }} Team</div>
+  <div class="meta">{{ company_name }} · Onboarding {{ start_date }}</div>
+  <span class="slide-number">1</span>
+</div>
+
+<!-- ===== SLIDE 2: Company Overview ===== -->
+<div class="slide slide-content">
+  <h2>🏢 {{ company_name }}</h2>
+  <div class="values-grid">
+    <div class="value-item">🎯 Technical excellence</div>
+    <div class="value-item">🤝 Collaboration & transparency</div>
+    <div class="value-item">🚀 Impact & innovation</div>
+    <div class="value-item">💙 Kindness</div>
+  </div>
+  <ul class="clean" style="margin-top:2rem;">
+    <li><strong>Your role:</strong> {{ role_title }}</li>
+    <li><strong>Your team:</strong> {{ team }}</li>
+    <li><strong>Your manager:</strong> {{ manager_name }}</li>
+    <li><strong>Start date:</strong> {{ start_date }}</li>
+  </ul>
+  <span class="slide-number">2</span>
+</div>
+
+<!-- ===== SLIDE 3: Your Team ===== -->
+<div class="slide slide-alt">
+  <h2>👥 Your Team</h2>
+  <div class="card-grid">
+    <div class="card">
+      <h3>👔 Manager</h3>
+      <p>{{ manager_name }}</p>
+      <div class="email">{{ manager_email }}</div>
+    </div>
+    {% for member in team_members %}
+    <div class="card">
+      <h3>{{ member.role }}</h3>
+      <p>{{ member.nom }}</p>
+      <div class="email">{{ member.email }}</div>
+    </div>
+    {% endfor %}
+  </div>
+  <span class="slide-number">3</span>
+</div>
+
+<!-- ===== SLIDE 4: First Week Schedule ===== -->
+<div class="slide slide-content">
+  <h2>📅 Your First Week</h2>
+  <div class="timeline">
+    {% for meeting in meetings %}
+    <div class="timeline-item">
+      <div class="timeline-day">Day {{ meeting.jour }}</div>
+      <div class="timeline-content">
+        <h4>{{ meeting.type }} ({{ meeting.duree_minutes }} min)</h4>
+        <p>{{ meeting.description }}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <span class="slide-number">4</span>
+</div>
+
+<!-- ===== SLIDE 5: Tools & Access ===== -->
+<div class="slide slide-alt">
+  <h2>🔐 Tools & Access</h2>
+  <ul class="clean">
+    {% for access in access_list %}
+    <li>{{ access }}</li>
+    {% endfor %}
+  </ul>
+  <span class="slide-number">5</span>
+</div>
+
+<!-- ===== SLIDE 6: Checklist ===== -->
+<div class="slide slide-content">
+  <h2>📋 Onboarding Checklist</h2>
+  <table class="checklist">
+    <thead>
+      <tr><th>Phase</th><th>Tâche</th><th>Statut</th></tr>
+    </thead>
+    <tbody>
+      {% for item in checklist_tasks %}
+      <tr>
+        <td>{{ item.Phase }}</td>
+        <td>{{ item["Tâche"] }}</td>
+        <td>{{ item.Statut }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <span class="slide-number">6</span>
+</div>
+
+<!-- ===== SLIDE 7: Contacts ===== -->
+<div class="slide slide-end">
+  <h2>📞 Useful Contacts</h2>
+  <table class="contact-table" style="max-width:500px;margin:0 auto;">
+    <tr><td class="label">Manager</td><td>{{ manager_email }}</td></tr>
+    <tr><td class="label">HR</td><td>{{ rh_email }}</td></tr>
+    <tr><td class="label">Support IT</td><td>{{ it_email }}</td></tr>
+  </table>
+  <p style="margin-top:3rem;opacity:0.7;font-size:0.9rem;">
+    Automatically generated on {{ generated_date }} by the Onboarding Agent
+  </p>
+  <span class="slide-number">7</span>
+</div>
+
+</body>
+</html>

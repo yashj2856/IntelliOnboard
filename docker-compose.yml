@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  # ============================================
+  # Application principale - Interface Streamlit
+  # ============================================
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: onboarding-app
+    ports:
+      - "8501:8501"
+    env_file:
+      - .env
+    volumes:
+      - ./config:/app/config
+      - ./templates:/app/templates
+      - ./data:/app/data
+      - ./agents:/app/agents
+      - ./mcp_tools:/app/mcp_tools
+      - ./credentials:/app/credentials
+    networks:
+      - onboarding-net
+    restart: unless-stopped
+
+  # ============================================
+  # Assistant Chat - Interface chatbot employe
+  # ============================================
+  assistant:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: onboarding-assistant
+    command: streamlit run app_assistant.py --server.address 0.0.0.0 --server.port 8502 --server.headless true
+    ports:
+      - "8502:8502"
+    env_file:
+      - .env
+    volumes:
+      - ./config:/app/config
+      - ./templates:/app/templates
+      - ./data:/app/data
+      - ./agents:/app/agents
+      - ./mcp_tools:/app/mcp_tools
+      - ./credentials:/app/credentials
+    networks:
+      - onboarding-net
+    restart: unless-stopped
+
+networks:
+  onboarding-net:
+    driver: bridge

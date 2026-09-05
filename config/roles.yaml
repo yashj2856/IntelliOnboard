@@ -1,0 +1,248 @@
+# ============================================
+# Configuration des rôles pour l'onboarding
+# Ajouter un rôle = ajouter un bloc YAML, pas du code
+# ============================================
+
+data_engineer:
+  titre: "Data Engineer"
+  departement: "Data Platform"
+  acces_a_provisionner:
+    - Google Cloud Platform (BigQuery, Cloud Storage, Dataflow)
+    - GitHub (repo data-platform, repo data-pipelines)
+    - Airflow (instance production + staging)
+    - dbt Cloud
+    - Looker / Data Studio
+    - Slack (#data-team, #data-alerts, #engineering)
+  outils_a_installer:
+    - Python 3.12 + environnement conda
+    - Docker Desktop
+    - VS Code + extensions (Python, BigQuery, dbt)
+    - Google Cloud SDK
+    - Terraform CLI
+  formations_obligatoires:
+    - "Security & data privacy onboarding (2h)"
+    - "Architecture Data Platform - overview (1h)"
+    - "Data coding standards & CI/CD (1h)"
+    - "Data access and governance (1h)"
+  reunions_premiere_semaine:
+    - type: "1:1 Manager"
+      duree_minutes: 60
+      jour: 1
+      description: "Welcome, 30/60/90-day goals, and team introduction"
+    - type: "Team Lunch"
+      duree_minutes: 90
+      jour: 1
+      description: "Informal lunch with the Data Platform team"
+    - type: "Technical Setup"
+      duree_minutes: 120
+      jour: 1
+      description: "Tool installation and environment access"
+    - type: "Architecture walkthrough"
+      duree_minutes: 90
+      jour: 2
+      description: "Data architecture overview with the lead"
+    - type: "Pair programming"
+      duree_minutes: 120
+      jour: 3
+      description: "First ticket paired with a team member"
+    - type: "1:1 HR"
+      duree_minutes: 45
+      jour: 4
+      description: "Administrative formalities and questions"
+    - type: "Week-end Checkpoint"
+      duree_minutes: 30
+      jour: 5
+      description: "First-week feedback with the manager"
+  checklist:
+    avant_arrivee:
+      - "Order equipment (laptop, monitor, etc.)"
+      - "Create Google Workspace account"
+      - "Provision GCP access"
+      - "Create GitHub account and add to repositories"
+      - "Prepare access badge"
+    jour_1:
+      - "In-person welcome by manager"
+      - "Office tour"
+      - "Workstation setup"
+      - "Verify all access credentials"
+    semaine_1:
+      - "Complete all mandatory training"
+      - "First commit on a repository"
+      - "Understand the main data pipeline"
+    mois_1:
+      - "Deliver a first ticket independently"
+      - "Document an existing process"
+      - "Informal 360 feedback"
+
+developpeur_fullstack:
+  titre: "Fullstack Developer"
+  departement: "Engineering"
+  acces_a_provisionner:
+    - GitHub (repos frontend, backend, infra)
+    - Vercel / Netlify
+    - Staging database
+    - Sentry (error monitoring)
+    - Figma (view access)
+    - Slack (#engineering, #frontend, #deployments)
+  outils_a_installer:
+    - Node.js 20 LTS + pnpm
+    - Docker Desktop
+    - VS Code + extensions (ESLint, Prettier, Tailwind)
+    - Postman / Insomnia
+  formations_obligatoires:
+      - "Security & data privacy onboarding (2h)"
+      - "Application architecture overview (1h)"
+      - "Coding standards & review process (1h)"
+      - "CI/CD deployment process (30min)"
+  reunions_premiere_semaine:
+    - type: "1:1 Manager"
+      duree_minutes: 60
+      jour: 1
+      description: "Accueil et objectifs"
+    - type: "Team Lunch"
+      duree_minutes: 90
+      jour: 1
+      description: "Lunch with the Engineering team"
+    - type: "Technical Setup"
+      duree_minutes: 120
+      jour: 1
+      description: "Setup de l'environnement de dev local"
+    - type: "Codebase walkthrough"
+      duree_minutes: 120
+      jour: 2
+      description: "Tour du codebase avec un senior dev"
+    - type: "Pair programming"
+      duree_minutes: 120
+      jour: 3
+      description: "First bug fix paired with a teammate"
+    - type: "Product overview"
+      duree_minutes: 60
+      jour: 4
+      description: "Product overview with the PM"
+  checklist:
+    avant_arrivee:
+      - "Order equipment"
+      - "Create accounts (Google, GitHub, Slack)"
+      - "Prepare a first 'good first issue' ticket"
+    jour_1:
+      - "Accueil et tour des locaux"
+      - "Setup complet de l'environnement"
+      - "Premier `git clone` et `npm run dev`"
+    semaine_1:
+      - "Complete mandatory training"
+      - "Merge a first PR"
+    mois_1:
+      - "Livrer une feature en autonomie"
+      - "Participate in a code review"
+
+chef_de_projet:
+  titre: "Project Manager"
+  departement: "PMO"
+  acces_a_provisionner:
+    - Jira / Linear (espace projet)
+    - Confluence / Notion (documentation)
+    - Google Drive (dossiers projets)
+    - Slack (#projects, #general, #management)
+    - Figma (lecture)
+  outils_a_installer:
+    - Suite Google Workspace
+    - Loom (video recording)
+  formations_obligatoires:
+      - "Security & data privacy onboarding (2h)"
+      - "Internal project methodology (2h)"
+      - "Project management tools (1h)"
+      - "Budgeting process (1h)"
+  reunions_premiere_semaine:
+    - type: "1:1 Manager"
+      duree_minutes: 60
+      jour: 1
+      description: "Welcome, project portfolio, and goals"
+    - type: "Team Lunch"
+      duree_minutes: 90
+      jour: 1
+      description: "Meet the PMO team"
+    - type: "Project Tour"
+      duree_minutes: 120
+      jour: 2
+      description: "Overview of current projects"
+    - type: "Stakeholder Meetings"
+      duree_minutes: 60
+      jour: 3
+      description: "Meet key stakeholders"
+    - type: "1:1 HR"
+      duree_minutes: 45
+      jour: 4
+      description: "Administrative formalities"
+  checklist:
+    avant_arrivee:
+      - "Create tool accounts"
+      - "Prepare access to project folders"
+      - "Identify the first project to assign"
+    jour_1:
+      - "Welcome and team introduction"
+      - "Verify access to all tools"
+    semaine_1:
+      - "Understand the project portfolio"
+      - "Shadow a steering committee"
+    mois_1:
+      - "Lead a project independently"
+      - "Run a first steering committee"
+
+commercial:
+  titre: "Sales Executive"
+  departement: "Sales"
+  acces_a_provisionner:
+    - CRM (Salesforce / HubSpot)
+    - Google Drive (sales folders, presentations)
+    - Slack (#sales, #deals, #general)
+    - LinkedIn Sales Navigator
+    - E-signature tool (DocuSign)
+  outils_a_installer:
+    - Suite Google Workspace
+    - CRM browser extension
+  formations_obligatoires:
+    - "Security & data privacy onboarding (2h)"
+    - "Complete product/service offering (3h)"
+    - "Internal sales process (2h)"
+    - "CRM usage (1h)"
+    - "Sales pitch best practices (1h)"
+  reunions_premiere_semaine:
+    - type: "1:1 Manager"
+      duree_minutes: 60
+      jour: 1
+      description: "Welcome, territory, and goals"
+    - type: "Team Lunch"
+      duree_minutes: 90
+      jour: 1
+      description: "Meet the Sales team"
+    - type: "Sales Shadow"
+      duree_minutes: 180
+      jour: 2
+      description: "Shadow a senior sales executive in a customer meeting"
+    - type: "Product deep dive"
+      duree_minutes: 120
+      jour: 3
+      description: "Deep product training"
+    - type: "Pitch Role Play"
+      duree_minutes: 60
+      jour: 4
+      description: "Pitch practice with feedback"
+    - type: "1:1 HR"
+      duree_minutes: 45
+      jour: 5
+      description: "Formalities and questions"
+  checklist:
+    avant_arrivee:
+      - "Create CRM account"
+      - "Prepare sales territory"
+      - "Order business cards"
+    jour_1:
+      - "Welcome and office tour"
+      - "Verify CRM access"
+      - "Product offering presentation"
+    semaine_1:
+      - "Complete all training"
+      - "First supervised prospecting call"
+    mois_1:
+      - "First 10 meetings independently"
+      - "Send the first commercial proposal"

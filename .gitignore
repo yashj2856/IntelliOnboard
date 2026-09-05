@@ -1,0 +1,37 @@
+# Environment & secrets
+.env
+.env.*
+!.env.example
+credentials/
+credentials/*.json
+token.json
+oauth_client.json
+
+# Local OAuth and generated artifacts
+*.pem
+*.key
+*.crt
+*.log
+*.json
+!config/*.yaml
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+
+# Data
+data/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo

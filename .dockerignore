@@ -1,0 +1,14 @@
+.env
+.git
+.gitignore
+.DS_Store
+__pycache__
+*.pyc
+credentials/
+data/
+README.md
+LICENSE
+article-text/
+documentation/
+screenshots/
+docs/

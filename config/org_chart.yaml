@@ -1,0 +1,67 @@
+entreprise:
+  nom: "TechCorp"
+  domaine: "gmail.com"
+
+equipes:
+  data_platform:
+    nom: "Data Platform"
+    manager:
+      nom: "Jean Dupont"
+      email: "manager@example.com"
+      calendrier: "manager@example.com"
+    membres:
+      - nom: "Alice Martin"
+        email: "alice@example.com"
+        role: "Senior Data Engineer"
+      - nom: "Bob Leroy"
+        email: "bob@example.com"
+        role: "Data Engineer"
+      - nom: "Clara Petit"
+        email: "clara@example.com"
+        role: "Analytics Engineer"
+
+  engineering:
+    nom: "Engineering"
+    manager:
+      nom: "Marie Curie"
+      email: "manager@example.com"
+      calendrier: "manager@example.com"
+    membres:
+      - nom: "David Moreau"
+        email: "david@example.com"
+        role: "Senior Fullstack Developer"
+      - nom: "Eva Blanc"
+        email: "eva@example.com"
+        role: "Frontend Developer"
+
+  sales:
+    nom: "Sales"
+    manager:
+      nom: "François Girard"
+      email: "manager@example.com"
+      calendrier: "manager@example.com"
+    membres:
+      - nom: "Gina Rossi"
+        email: "gina@example.com"
+        role: "Senior Account Executive"
+
+  pmo:
+    nom: "PMO"
+    manager:
+      nom: "Hugo Lefebvre"
+      email: "manager@example.com"
+      calendrier: "manager@example.com"
+    membres:
+      - nom: "Isabelle Fournier"
+        email: "isabelle@example.com"
+        role: "Senior Project Manager"
+
+rh:
+  contact_principal:
+    nom: "Nathalie Bernard"
+    email: "hr@example.com"
+
+it_support:
+  contact_principal:
+    nom: "Support IT"
+    email: "it-support@example.com"
